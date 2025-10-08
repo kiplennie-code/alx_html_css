@@ -1,0 +1,751 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Variables */
+:root {
+    --primary-color: #FF6565;
+    --text-color: #ffffff;
+    --text-dark: #071629;
+    --font-family: 'Source Sans Pro', sans-serif;
+    --max-width: 1000px;
+}
+
+/* Base Styles */
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background-image: url('headphones_hero_1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 800px;
+    position: relative;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    position: relative;
+}
+
+.nav-logo img {
+    height: 32px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a:active {
+    color: var(--primary-color);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    gap: 5px;
+}
+
+.hamburger-line {
+    width: 20px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* Hamburger Animation */
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 250px 0 100px;
+}
+
+.hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 14px 32px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 22px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover,
+.btn:active {
+    opacity: 0.9;
+}
+
+.hero-description {
+    max-width: 650px;
+    margin: 60px auto 0;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+}
+
+/* Generic Section Styles (Reusable) */
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 90px;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 70px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* What We Do Section */
+.what-we-do {
+    padding: 110px 0;
+    background-color: #ffffff;
+    color: var(--text-dark);
+}
+
+.what-we-do .section-title {
+    color: var(--text-dark);
+}
+
+.what-we-do .section-description {
+    color: var(--text-dark);
+}
+
+.service-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+/* Animation: Icon Float */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.service-item .icon {
+    font-size: 94px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: block;
+    line-height: 1;
+    transition: all 0.4s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Stagger the animation for each item */
+.service-item:nth-child(1) .icon {
+    animation-delay: 0s;
+}
+
+.service-item:nth-child(2) .icon {
+    animation-delay: 0.3s;
+}
+
+.service-item:nth-child(3) .icon {
+    animation-delay: 0.6s;
+}
+
+.service-item:nth-child(4) .icon {
+    animation-delay: 0.9s;
+}
+
+/* Hover Animation: Scale and Rotate Icon */
+.service-item:hover .icon {
+    transform: scale(1.2) rotate(5deg);
+    color: #ff4545;
+    animation-play-state: paused;
+}
+
+.service-item:hover {
+    transform: translateY(-15px);
+}
+
+.service-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+}
+
+.service-item:hover h3 {
+    color: var(--primary-color);
+}
+
+.service-item p {
+    font-size: 14px;
+    line-height: 26px;
+    color: var(--text-dark);
+    transition: opacity 0.3s ease;
+}
+
+.service-item:hover p {
+    opacity: 0.8;
+}
+
+/* Our Results Section */
+.our-results {
+    padding: 110px 0;
+    background-image: url('headphones_hero_2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: var(--text-color);
+}
+
+.our-results::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+}
+
+.our-results .container {
+    position: relative;
+    z-index: 1;
+}
+
+.our-results .section-title {
+    color: var(--text-color);
+}
+
+.our-results .section-description {
+    color: var(--text-color);
+}
+
+.result-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Pentagon Shape */
+.pentagon {
+    width: 190px;
+    height: 190px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('pentagone.png');
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    transition: all 0.5s ease;
+}
+
+/* Animation: Pulse */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+    }
+}
+
+.pentagon {
+    animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* Stagger pulse animation */
+.result-item:nth-child(1) .pentagon {
+    animation-delay: 0s;
+}
+
+.result-item:nth-child(2) .pentagon {
+    animation-delay: 0.2s;
+}
+
+.result-item:nth-child(3) .pentagon {
+    animation-delay: 0.4s;
+}
+
+.result-item:nth-child(4) .pentagon {
+    animation-delay: 0.6s;
+}
+
+/* Hover Animation: Bounce and Rotate */
+@keyframes bounce-rotate {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.15) rotate(-5deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(0deg);
+    }
+    75% {
+        transform: scale(1.15) rotate(5deg);
+    }
+}
+
+.result-item:hover .pentagon {
+    animation: bounce-rotate 0.6s ease forwards;
+    filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 101, 101, 0.6));
+}
+
+.pentagon-content {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.result-item:hover .pentagon-content {
+    transform: scale(1.1);
+}
+
+.result-percentage {
+    font-size: 46px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.result-item:hover .result-percentage {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.result-text {
+    font-size: 14px;
+    color: var(--text-color);
+    line-height: 1.4;
+    transition: opacity 0.3s ease;
+}
+
+.result-item:hover .result-text {
+    opacity: 0.9;
+}
+
+/* Contact Us Section */
+.contact-us {
+    padding: 110px 0;
+    background-color: #ffffff;
+    color: var(--text-dark);
+}
+
+.contact-us .section-title {
+    color: var(--text-dark);
+    margin-bottom: 60px;
+}
+
+.contact-form {
+    max-width: 335px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #d3d3d3;
+    padding: 10px 0;
+    font-family: var(--font-family);
+    font-size: 14px;
+    color: var(--text-dark);
+    background-color: transparent;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-dark);
+    font-weight: 600;
+    opacity: 1;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-bottom-color: var(--primary-color);
+}
+
+.form-group input:focus::placeholder,
+.form-group textarea:focus::placeholder {
+    opacity: 0.6;
+}
+
+/* Form validation styles */
+.form-group input:valid,
+.form-group textarea:valid {
+    border-bottom-color: #4CAF50;
+}
+
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+    border-bottom-color: var(--primary-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 40px;
+}
+
+.btn-submit {
+    align-self: center;
+    margin-top: 20px;
+    min-width: 162px;
+}
+
+/* Footer */
+.footer {
+    padding: 60px 0 40px;
+    background-color: var(--text-dark);
+    color: var(--text-color);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.footer-logo img {
+    height: 32px;
+    width: auto;
+}
+
+.footer-social {
+    display: flex;
+    gap: 20px;
+}
+
+.social-link {
+    display: inline-block;
+    transition: opacity 0.3s ease;
+}
+
+.social-link:hover,
+.social-link:active {
+    opacity: 0.9;
+}
+
+.social-link svg {
+    fill: var(--text-color);
+    width: 30px;
+    height: 30px;
+}
+
+.footer-copyright {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* Responsive - Mobile (480px and below) */
+@media screen and (max-width: 480px) {
+    .header {
+        min-height: 700px;
+    }
+
+    .nav {
+        padding: 20px 0;
+    }
+
+    /* Show hamburger, hide desktop menu */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 40px 20px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.4s ease;
+    }
+
+    .nav-menu.active {
+        max-height: 300px;
+        opacity: 1;
+    }
+
+    .nav-menu li {
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+    }
+
+    .nav-menu.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-menu.active li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-menu.active li:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-menu.active li:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    .hero {
+        padding: 200px 0 80px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+        padding: 0 20px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+        line-height: 26px;
+        padding: 0 10px;
+    }
+
+    /* Generic Section - Mobile */
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .section-description {
+        font-size: 16px;
+        margin-bottom: 60px;
+        padding: 0 10px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 90px;
+        padding: 0 40px;
+    }
+
+    /* What We Do - Mobile */
+    .what-we-do {
+        padding: 60px 0;
+    }
+
+    .service-item .icon {
+        font-size: 90px;
+    }
+
+    /* Our Results - Mobile */
+    .our-results {
+        padding: 60px 0;
+    }
+
+    .pentagon {
+        width: 190px;
+        height: 190px;
+    }
+
+    /* Contact Us - Mobile */
+    .contact-us {
+        padding: 60px 0;
+    }
+
+    .contact-form {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    /* Footer - Mobile */
+    .footer {
+        padding: 50px 0 30px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 50px;
+    }
+
+    .footer-logo {
+        order: 1;
+    }
+
+    .footer-social {
+        order: 2;
+    }
+}
+
+/* Responsive - Tablet (481px to 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .nav-menu {
+        gap: 30px;
+    }
+
+    .hero {
+        padding: 220px 0 90px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    /* Generic Section - Tablet */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 80px 60px;
+        padding: 0 40px;
+    }
+
+    /* What We Do - Tablet */
+    .what-we-do {
+        padding: 80px 0;
+    }
+
+    /* Our Results - Tablet */
+    .our-results {
+        padding: 80px 0;
+    }
+
+    /* Contact Us - Tablet */
+    .contact-us {
+        padding: 80px 0;
+    }
+
+    /* Footer - Tablet */
+    .footer-content {
+        padding: 0 40px;
+    }
+}
+
+/* Responsive - Small Desktop (769px to 1000px) */
+@media screen and (min-width: 769px) and (max-width: 1000px) {
+    .container {
+        padding: 0 40px;
+    }
+
+    .services-grid {
+        gap: 50px;
+    }
+}
